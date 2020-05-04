@@ -10,7 +10,7 @@ imt_list = [                                                                    
     [100, 'очень резкое ожирение']
 ]
 key_cup='y'
-while key_cup!='n' and key_cup!='т':                                                        #вводим тело программы в цикл
+while key_cup!='n' and key_cup!='т':                                                        #вводим тело программы в цикл до тех пор пока не введут т или n
     os.system('cls' if os.name == 'nt' else 'clear')                                        #очищаем экран терминала
     user_weight=input("\nВведите ваш вес, кг: ")
     user_height=input("Введите ваш рост, см: ")
