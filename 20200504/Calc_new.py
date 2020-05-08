@@ -39,9 +39,48 @@ def get_user(list):                                         #Функция дл
             print('Вы ввели неверное значение')
             return -1
 
+def get_user_data(user_data,position):
+    user_data['ФИО']=input('\nВведите ФИО: ')
+    if not position or position==2:
+        while True:
+            user_data['Пол']=input('Введите Пол (М/Ж): ')
+            if user_data['Пол']!='M' and user_data['Пол']!='Ж' and user_data['Пол']!='м' and user_data['Пол']!='ж':
+                print('Вы ввели неверное значение. Попробуйте снова')
+            else:
+                break
+    if not position or position==3:
+        while True:
+            user_data['Возраст']=input('Введите Возраст, полных лет: ')
+            try:
+                int(user_data['Возраст'])
+            except:
+                print('Вы ввели неверное значение. Попробуйте снова')
+            else:
+                break
+    if not position or position==4:
+        while True:
+            user_data['Вес']=input('Введите Вес, кг: ')
+            try: 
+                Decimal(user_data['Вес'])
+            except:
+                print('Вы ввели неверное значение. Попробуйте снова')
+            else:
+                break
+    if not position or position==4:
+        while True:
+            user_data['Рост']=input('Введите Рост, см: ')
+            try:
+                Decimal(user_data['Рост'])
+            except:
+                print('Вы ввели неверное значение. Попробуйте снова')
+            else:
+                break
+    return user_data
+
 key='y'
 users=0                                                     #Счетчик, определяющий количество пользователей в базе
-right_enter=False                                                    
+right_enter=False   
+
 while key!='q' and key!='й':                                #тело программы в цикле
     if users:                                               #чтобы окно сразу не очищалось и было видно результат
         key=input("\nДля продолжения введите любую клавишу ")                                 
