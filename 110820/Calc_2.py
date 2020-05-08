@@ -153,7 +153,7 @@ def main():
             user_got=get_user(user_list)
             key=input("\nВы уверены? (y)")
             if key=='y' or key=='н':
-                del user_list[user_got]
+                user_list.pop(user_got,None)
                 print("\nПользователь удален\n\nТекущий список пользователей")
                 print_users(user_list)
             else:
