@@ -21,7 +21,6 @@ def print_user_data(list_opt):
     print("3. Возраст: ",list_opt['Возраст'],' лет')
     print("4. Вес: ",list_opt['Вес'],' кг')
     print("5. Рост: ",list_opt['Рост'], ' см')
-    i=0
 
 def get_user(list):                                         #Функция для выбора пользователя из списка
     print_users(list)
@@ -40,7 +39,8 @@ def get_user(list):                                         #Функция дл
             return -1
 
 def get_user_data(user_data,position):
-    user_data['ФИО']=input('\nВведите ФИО: ')
+    if not position or position==1:
+        user_data['ФИО']=input('\nВведите ФИО: ')
     if not position or position==2:
         while True:
             user_data['Пол']=input('Введите Пол (М/Ж): ')
@@ -66,7 +66,7 @@ def get_user_data(user_data,position):
                 print('Вы ввели неверное значение. Попробуйте снова')
             else:
                 break
-    if not position or position==4:
+    if not position or position==5:
         while True:
             user_data['Рост']=input('Введите Рост, см: ')
             try:
@@ -75,11 +75,12 @@ def get_user_data(user_data,position):
                 print('Вы ввели неверное значение. Попробуйте снова')
             else:
                 break
+    if position>5 or position<0:
+        print("Такого параметра нет")
     return user_data
 
 key='y'
-users=0                                                     #Счетчик, определяющий количество пользователей в базе
-right_enter=False   
+users=0                                                     #Счетчик, определяющий количество пользователей в базе 
 
 while key!='q' and key!='й':                                #тело программы в цикле
     if users:                                               #чтобы окно сразу не очищалось и было видно результат
@@ -101,47 +102,8 @@ while key!='q' and key!='й':                                #тело прог�
             user_list.append({})
         else:
             user_list = [{}]
-
-        user_list[users]['ФИО']=input('Создание нового пользователя\nВведите ФИО: ')
-        
-        while not right_enter:
-            user_list[users]['Пол']=input('Введите Пол (М/Ж): ')
-            if user_list[users]['Пол']!='M' and user_list[users]['Пол']!='Ж' and user_list[users]['Пол']!='м' and user_list[users]['Пол']!='ж':
-                print('Вы ввели неверное значение. Попробуйте снова')
-            else:
-                right_enter=True
-        right_enter=False
-        
-        while not right_enter:
-            user_list[users]['Возраст']=input('Введите Возраст, полных лет: ')
-            try:
-                int(user_list[users]['Возраст'])
-            except:
-                print('Вы ввели неверное значение. Попробуйте снова')
-            else:
-                right_enter=True
-        right_enter=False
-
-        while not right_enter:
-            user_list[users]['Вес']=input('Введите Вес, кг: ')
-            try: 
-                Decimal(user_list[users]['Вес'])
-            except:
-                print('Вы ввели неверное значение. Попробуйте снова')
-            else:
-                right_enter=True
-        right_enter=False
-
-        while not right_enter:
-            user_list[users]['Рост']=input('Введите Рост, см: ')
-            try:
-                Decimal(user_list[users]['Рост'])
-            except:
-                print('Вы ввели неверное значение. Попробуйте снова')
-            else:
-                right_enter=True
-        right_enter=False
-
+        print('Создание нового пользователя\nВведите ФИО: ')
+        user_list[users]=get_user_data(user_list[users],0)
         print('\nВведенные данные: ')
         print_user_data(user_list[users])
         users=len(user_list)
@@ -161,16 +123,7 @@ while key!='q' and key!='й':                                #тело прог�
                 print("Вы ввели неверное значение ключа")
                 key=22
             else:
-                if key==1:
-                    user_list[user_got]['ФИО']=input("Введите новые ФИО: ")
-                elif key==2:
-                    user_list[user_got]['Пол']=input("Новый пол: ")
-                elif key==3:
-                    user_list[user_got]['Возраст']=input("Актуальный возраст: ")
-                elif key==4:
-                    user_list[user_got]['Вес']=input("Введите текущий вес: ")
-                elif key==5:
-                    user_list[user_got]['Рост']=input("Введите текущий рост: ")
+                user_list[user_got]=get_user_data(user_list[user_got],key)
                 print('\nИзмененные данные:')
                 print_user_data(user_list[user_got])    
         
