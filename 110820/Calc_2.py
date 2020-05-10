@@ -159,8 +159,8 @@ def main():
             users=create_user()
 
         elif key=='2' and users:                                #2. Изменить данные пользователя
-            got_user=get_user()                                
-            users_database[got_user]=change_user_data(users_database[got_user])     
+            user=get_user()                                
+            users_database[user]=change_user_data(users_database[user])     
         
         elif key=='3' and users:                                 #3. Рассчитать ИМТ для пользователя
             imt_calc(users_database[get_user()])
