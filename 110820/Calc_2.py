@@ -145,24 +145,19 @@ def print_menu(users):                                                  #Мен�
 
 def main():
     global users_database
-    key='y'                                                     
+    key='y'
     users=False                                                 #Определяет есть ли пользователи в базе
-    while key!='q' and key!='й':                                
+    while key!='q' and key!='й':
         key=print_menu(users)                                   #Вывести меню
-        
         if key=="1":                                            #1. Ввести нового пользователя
             create_user()
-
         elif key=='2' and users:                                #2. Изменить данные пользователя
             user=get_user()                                
             users_database[user]=change_user_data(users_database[user])     
-        
         elif key=='3' and users:                                 #3. Рассчитать ИМТ для пользователя
             imt_calc(users_database[get_user()])
-
         elif key=='4' and users:                                 #4. Вывести список пользователей
             print_user_data(users_database[get_user()])                     
-
         elif key=='5' and users:                                 #5. Удалить пользователя
             delete_user(get_user())
         
