@@ -97,12 +97,16 @@ def imt_calc(list):
 def delete_user(position):                                              #Удаление пользователя
     global users_database
     key=input("\nВы уверены? (y)")
+    users=True
     if key=='y' or key=='н':
+        if len(users_database)==2:
+            users=False
         del users_database[position]
         print("\nПользователь удален\n\nТекущий список пользователей")
         print_users()
     else:
         print("\nУдаление отменено")
+    return users
 
 def change_user_data(list):                                             #Изменение данных пользователя
     print("\nВыберите какие данные вы хотите изменить:")
@@ -148,7 +152,6 @@ def main():
     global users_database
     key='y'                                                     
     users=False
-
     while key!='q' and key!='й':                                
         key=print_menu(users)                                   #Вывести меню
         
@@ -159,14 +162,14 @@ def main():
             got_user=get_user()                                
             users_database[got_user]=change_user_data(users_database[got_user])     
         
-        elif key=='3'and users:                                 #3. Рассчитать ИМТ для пользователя
+        elif key=='3' and users:                                 #3. Рассчитать ИМТ для пользователя
             imt_calc(users_database[get_user()])
 
-        elif key=='4'and users:                                 #4. Вывести список пользователей
+        elif key=='4' and users:                                 #4. Вывести список пользователей
             print_user_data(users_database[get_user()])                     
 
-        elif key=='5'and users:                                 #5. Удалить пользователя
-            delete_user(get_user())
+        elif key=='5' and users:                                 #5. Удалить пользователя
+            users=delete_user(get_user())
 
 if __name__ == "__main__":
     main()
