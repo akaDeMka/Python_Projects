@@ -97,16 +97,12 @@ def imt_calc(list):                                                     #Рас�
 def delete_user(position):                                              #Удаление пользователя
     global users_database
     key=input("\nВы уверены? (y)")
-    users=True
     if key=='y' or key=='н':
-        if len(users_database)==2:
-            users=False
         del users_database[position]
         print("\nПользователь удален\n\nТекущий список пользователей")
         print_users()
     else:
         print("\nУдаление отменено")
-    return users
 
 def change_user_data(list):                                             #Изменение данных пользователя
     print("\nВыберите какие данные вы хотите изменить:")
@@ -129,8 +125,7 @@ def create_user():                                                      #Уда�
     users_database[users]=get_user_data(users_database[users])
     print('\nВведенные данные: ')
     print_user_data(users_database[users])
-    users_database.append({})
-    return True   
+    users_database.append({}) 
 
 def print_menu(users):                                                  #Меню программы
     if users:                                               #чтобы окно сразу не очищалось и было видно результат
@@ -151,12 +146,12 @@ def print_menu(users):                                                  #Мен�
 def main():
     global users_database
     key='y'                                                     
-    users=False
+    users=False                                                 #Определяет есть ли пользователи в базе
     while key!='q' and key!='й':                                
         key=print_menu(users)                                   #Вывести меню
         
         if key=="1":                                            #1. Ввести нового пользователя
-            users=create_user()
+            create_user()
 
         elif key=='2' and users:                                #2. Изменить данные пользователя
             user=get_user()                                
@@ -169,7 +164,12 @@ def main():
             print_user_data(users_database[get_user()])                     
 
         elif key=='5' and users:                                 #5. Удалить пользователя
-            users=delete_user(get_user())
+            delete_user(get_user())
+        
+        if len(users_database)>1:                               #Проверка - есть ли пользователи в базе
+            users=True
+        else:
+            users=False
 
 if __name__ == "__main__":
     main()
