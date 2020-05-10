@@ -1,19 +1,20 @@
-from decimal import Decimal                                                                 #Импортируем для нормальных расчетов с дробными числами
-import os   
+from decimal import Decimal                                 #Импортируем для нормальных расчетов с дробными числами
+import os                                                   #Модуль для функции очистки экрана терминала
+users_database=[{}]                                         #База данных
 
 def print_users():
-    global users_database                                      #Процедура для вывода пользователей
+    global users_database                                   #Процедура для вывода пользователей
     for i in range(0,len(users_database)-1,1):
         print(i+1,' '+users_database[i]['ФИО'])
 
-def print_user_data(list_opt):
+def print_user_data(list_opt):                              #Вывод информации о пользователе
     print("1. ФИО: ",list_opt['ФИО'])
     print("2. Пол: ",list_opt['Пол'])
     print("3. Возраст: ",list_opt['Возраст'],' лет')
     print("4. Вес: ",list_opt['Вес'],' кг')
     print("5. Рост: ",list_opt['Рост'], ' см')
 
-def get_user():                                         #Функция для выбора пользователя из списка
+def get_user():                                             #Функция для выбора пользователя из списка
     global users_database
     print_users()
     while True:
@@ -29,7 +30,7 @@ def get_user():                                         #Функция для �
             else:
                 print('Вы ввели неверное значение')
 
-def get_user_data(user_data,position=0):
+def get_user_data(user_data,position=0):                    #Вводим данные пользователя
     if not position or position==1:
         user_data['ФИО']=input('\nВведите ФИО: ')
     if not position or position==2:
@@ -93,7 +94,7 @@ def imt_calc(list):
                 print('\n    У вас',key[1],'\n', '   Наш совет: ',key[2])
                 break
 
-def delete_user(position):
+def delete_user(position):                                              #Удаление пользователя
     global users_database
     key=input("\nВы уверены? (y)")
     if key=='y' or key=='н':
@@ -103,7 +104,7 @@ def delete_user(position):
     else:
         print("\nУдаление отменено")
 
-def change_user_data(list):
+def change_user_data(list):                                             #Изменение данных пользователя
     print("\nВыберите какие данные вы хотите изменить:")
     print_user_data(list)
     key=input("\nВведите номер записи, которую хотите изменить. Для выхода введите любую другую клавишу: ")
@@ -117,7 +118,7 @@ def change_user_data(list):
         print_user_data(list)
     return list
 
-def create_user():
+def create_user():                                                      #Удаление пользователя
     global users_database
     users=len(users_database)-1
     print('Создание нового пользователя\nВведите ФИО: ')
@@ -127,7 +128,7 @@ def create_user():
     users_database.append({})
     return True   
 
-def print_menu(users):
+def print_menu(users):                                                  #Меню программы
     if users:                                               #чтобы окно сразу не очищалось и было видно результат
         key=input("\nДля продолжения введите любую клавишу ")                                 
     os.system('cls' if os.name == 'nt' else 'clear')        #Очистка экрана
@@ -148,8 +149,8 @@ def main():
     key='y'                                                     
     users=False
 
-    while key!='q' and key!='й':                                #тело программы в цикле
-        key=print_menu(users)                                       #Вывести меню
+    while key!='q' and key!='й':                                
+        key=print_menu(users)                                   #Вывести меню
         
         if key=="1":                                            #1. Ввести нового пользователя
             users=create_user()
@@ -166,8 +167,6 @@ def main():
 
         elif key=='5'and users:                                 #5. Удалить пользователя
             delete_user(get_user())
-
-users_database=[{}]  
 
 if __name__ == "__main__":
     main()
