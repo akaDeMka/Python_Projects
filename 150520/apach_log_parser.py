@@ -15,7 +15,6 @@ def uniq_ips():
 def load_data(file_path):
     global log_records
     while not os.path.exists(file_path):
-        print(os.path.exists(file_path))
         file_path=input('Файл не найден. Введите путь до файла или нажмите q: ')
         if file_path=='q' or file_path=='й':
             exit()
@@ -32,14 +31,13 @@ def check_browser(browser):
     print('Всего записей с браузером ',browser,' - ',count)
 
 def main():
-
-    load_data('150520/apache_logs.txt')
-    print(len(log_records[1])," ", len(log_records[2]))
+    load_data('150520/apache_logs.txt') #Переделать задание директории
+    os.system('cls' if os.name == 'nt' else 'clear') 
     count_records()
     uniq_ips()
     check_browser("Safari")
-    check_browser('Googlebot')
+    check_browser('Firefox')
 
 log_records=[]
 if __name__ == "__main__":
-    main
+    main()
