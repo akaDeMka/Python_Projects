@@ -1,4 +1,4 @@
-import os
+import os                         #как вариант переделать с использованием генератора - чтобы уменьшить объем памяти
 
 def count_records():
     global log_records
