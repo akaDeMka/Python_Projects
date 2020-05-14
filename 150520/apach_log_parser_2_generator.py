@@ -28,7 +28,7 @@ def main():
     count=0
     os.system('cls' if os.name == 'nt' else 'clear') 
     path_to_file='150520/apache_logs.txt'
-    for i in load_data(get_file_path(path_to_file)):
+    for i in load_data(get_file_path(path_to_file)):    #Использование генератора позволит сократить расход памяти
         count+=1
         uniq_ips(i)
         safari+=check_browser(i,"Safari")
