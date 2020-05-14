@@ -32,8 +32,8 @@ def check_browser(browser):
 
 def main():
     os.system('cls' if os.name == 'nt' else 'clear') 
-    load_data(input('Текущая диектория '+os.path.abspath(".")+'\nВведите путь к файлу: '))      #Можно ввести вручную - но лень
-    #load_data('150520/apache_logs.txt') #Тут в зависимостьи от стартовой директории - я запускаю так
+    #load_data(input('Текущая диектория '+os.path.abspath(".")+'\nВведите путь к файлу: '))      #Можно ввести вручную - но лень
+    load_data('150520/apache_logs.txt') #Тут в зависимостьи от стартовой директории - я запускаю так
     os.system('cls' if os.name == 'nt' else 'clear') 
     count_records()
     uniq_ips()
