@@ -25,8 +25,7 @@ def check_browser(record, browser):
             return 0
 
 def get_statistics(date,count,safari,firefox):
-    global ip_list
-    global statistics
+    global ip_list, statistics
     statistics[len(statistics)-1]['Дата']=date
     statistics[len(statistics)-1]['Количество']=count
     statistics[len(statistics)-1]['Уникальных IP']=len(ip_list)
@@ -54,8 +53,7 @@ def print_statistics():
         statistics[len(statistics)-1]['Firefox']=statistics[len(statistics)-1]['Firefox']+int(record['Firefox'])
 
 def main():
-    global ip_list
-    global ip_list_full
+    global ip_list, ip_list_full
     safari=0
     firefox=0
     count=0
