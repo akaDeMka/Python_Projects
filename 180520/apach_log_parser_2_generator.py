@@ -2,8 +2,7 @@ import os                         #как вариант переделать с
 from datetime import datetime
 
 def uniq_ips(record):
-    global ip_list
-    global ip_list_full
+    global ip_list, ip_list_full
     ip_list.add(record[0])
     ip_list_full.add(record[0])
 
@@ -61,7 +60,7 @@ def main():
     firefox=0
     count=0
     os.system('cls' if os.name == 'nt' else 'clear') 
-    path_to_file='150520/apache_logs.txt'
+    path_to_file='150520/apache_logs.txt'               #Начальное значение
     for i in load_data(get_file_path(path_to_file)):    #Использование генератора позволит сократить расход памяти
         count+=1
         if count==1:
@@ -75,13 +74,8 @@ def main():
         safari+=check_browser(i,"Safari")
         firefox+=check_browser(i,"Firefox")
     get_statistics(date,count,safari,firefox)
-
-    #os.system('cls' if os.name == 'nt' else 'clear') 
+    os.system('cls' if os.name == 'nt' else 'clear') 
     print_statistics()
-    #print('Всего записей - ',count)
-    #print('Количество уникальных IP адресов -',len(ip_list))
-    #print('Всего записей с браузером Safari - ',safari)
-    #print('Всего записей с браузером Firefox - ',firefox)
 
 ip_list = set()
 ip_list_full = set()
