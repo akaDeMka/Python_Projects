@@ -53,7 +53,6 @@ def print_statistics():
         statistics[len(statistics)-1]['Firefox']=statistics[len(statistics)-1]['Firefox']+int(record['Firefox'])
 
 def main():
-    global ip_list, ip_list_full
     safari=0
     firefox=0
     count=0
@@ -77,7 +76,7 @@ def main():
 
 ip_list = set()
 ip_list_full = set()
-statistics=[{
+statistics=[{                                           #структура стат данных
     'Дата':"",
     'Количество': "",
     'Уникальных IP':"",
