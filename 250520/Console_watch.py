@@ -8,7 +8,8 @@ def main():
     root=tkinter.Tk()
     while True:
         os.system('cls' if os.name == 'nt' else 'clear') 
-        watch.print_watch(datetime.now().hour, datetime.now().minute, datetime.now().second)
+        date=datetime.now()
+        watch.print_watch(date.hour, date.minute, date.second)
         print('To exit press Ctrl+C buttons')
         root.after(100)
         #time.sleep(0.1)
