@@ -1,7 +1,3 @@
-import os 
-from datetime import datetime
-import time
-
 digits=[
     ['⬜⬜⬜⬜',
      '⬜⬛⬛⬜',
@@ -72,7 +68,7 @@ delimiters=[
      '⬛'],
 ]
 
-def print_digits(hours,minutes,seconds):
+def print_watch(hours,minutes,seconds):
     global digits,delimiters
     if not seconds%2:
         delim=1
@@ -97,10 +93,3 @@ def print_digits(hours,minutes,seconds):
         print(digits[hour_1][x]+delimiters[2][x]+digits[hours][x]+delimiters[delim][x]\
         +digits[minute_1][x]+delimiters[2][x]+digits[minutes][x]+delimiters[delim][x]\
         +digits[second_1][x]+delimiters[2][x]+digits[seconds][x])
-
-while True:
-    os.system('cls' if os.name == 'nt' else 'clear') 
-    print_digits(int(datetime.now().hour),int(datetime.now().minute),int(datetime.now().second))
-    print('To exit press Ctrl+C buttons')
-    time.sleep(0.1)
-
