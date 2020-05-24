@@ -10,7 +10,7 @@ def main():
         os.system('cls' if os.name == 'nt' else 'clear')        #Clear Terminal
         date=datetime.now()                                     #Take curent time
         watch.print_watch(date.hour, date.minute, date.second)  #print current timne in console
-        print('To exit press Ctrl+C buttons')                   
+        print('\nTo exit press Ctrl+C buttons')                   
         root.after(100)                                         #delay for 0.1 second
         #time.sleep(0.1)
 
