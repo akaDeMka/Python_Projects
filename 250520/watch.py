@@ -1,4 +1,4 @@
-digits=[
+digits=[                    #digits to print in console
     ['⬜⬜⬜⬜',
      '⬜⬛⬛⬜',
      '⬜⬛⬛⬜',
@@ -59,7 +59,7 @@ digits=[
      '⬛⬛⬛⬜',
      '⬜⬜⬜⬜'],
     ]
-delimiters=[
+delimiters=[          #delimeters for digits  
     ['⬛⬛⬛',
      '⬛⬛⬛',
      '⬛⬛⬛',
@@ -79,7 +79,7 @@ delimiters=[
      '⬛'],
     ]
 
-def print_watch(hours,minutes,seconds):
+def print_watch(hours,minutes,seconds):         #function to print watch with current time in console 
     global digits,delimiters
     if not seconds%2:
         delim=1
